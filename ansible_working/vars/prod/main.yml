@@ -1,0 +1,19 @@
+---
+env: dev
+remoteuser: wasadmin
+sudouser: wasadmin
+software_repo_path: /opt/IBM/softwares
+dmgr_profile_name: Dmgr01
+appserver_path: /opt/IBM/WebSphere/AppServer
+httpadminuser: wasadmin
+adminusergrp: wasadmin
+adminpassword: wasadmin
+dmgr_adminuser: wasadmin
+dmgr_adminpassword: wasadmin
+dmgr_nodename: dmgr
+dmgr_cellname: dmgrCell
+dmgrNode: dmgrNode
+dmgrCell: dmgrCell
+adminuser: wasadmin
+app_server_root: /opt/IBM/WebSphere/AppServer/
+profile_templates_path: "{{app_server_root}}/profileTemplates"

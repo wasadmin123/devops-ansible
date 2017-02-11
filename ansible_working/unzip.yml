@@ -1,0 +1,8 @@
+---
+- hosts: dmgr
+  tasks:
+    - name: unzipping the software
+      unarchive:
+        src: /opt/IBM/softwares/C1G32ML.tar.gz
+        dest: /opt/IBM/softwares
+        copy: no

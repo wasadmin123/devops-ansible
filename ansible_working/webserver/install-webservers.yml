@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+   - ./main.yml
+  tasks:
+   - name: copy the responsefile to install IBM HTTPServer
+     template: src=/home/wasadmin/Desktop/ansible/webserver/{{http_server_response_filename}} dest=/opt/IBM/{{http_server_response_filename}}
+   - name: install IBM HTTPServer
+     shell: '/home/wasadmin/Deskstop/ihs/IHS/install -options /opt/IBM/{{http_server_response_filename}} -silent -log /opt/IBM/log/httpServerInstall.log'

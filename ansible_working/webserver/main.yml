@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+  remoteuser: wasadmin
+  http_server_response_filename: responsefile.txt
+  http_port: 80
+  http_port: 8008
+  httpadminuser: wasadmin
+  adminusergrp: wasadmin
+  adminpassword: wasadmin
+  webserver_install_path: /opt/IBM/HTTPServer
+  webserver_resource_path: /opt/IBM/HTTPServer/htdocs
+  httpd_conf_path: /opt/IBM/HTTPServer/conf/httpd.conf
+  plugin_path: /opt/IBM/HTTPServer/Plugins
+  tasks: 
+   - name: copy the responsefile to install IBM HTTPServer
+     template: src=/home/wasadmin/Desktop/ansible/webserver/{{http_server_response_filename}} dest=/opt/IBM/{{http_server_response_filename}}
+   - name: install IBM HTTPServer
+     shell: '/home/wasadmin/Deskstop/ihs/IHS/install -options /opt/IBM/{{http_server_response_filename}} -silent'
+
+
+

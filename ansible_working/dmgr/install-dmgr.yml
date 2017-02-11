@@ -1,0 +1,14 @@
+---
+- hosts: dmgr
+  vars_files: 
+    - ../vars/{{env}}/main.yml
+  tasks:
+    - name: copy the response file
+      template: src=templates/responsefile.nd.txt dest=/opt/IBM/responsefile.nd.txt
+    - name: install dmgr
+      shell: '/opt/IBM/softwares/WAS/install -options /opt/IBM/responsefile.nd.txt -silent'
+    - name: stop dmgr
+      shell: '/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/stopManager.sh -user {{adminuser}} -password {{adminpassword}}'
+      ignore_errors: yes
+    - name: start dmgr
+      shell: '/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/startManager.sh -user {{adminuser}} -password {{adminpassword}}'
